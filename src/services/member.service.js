@@ -43,7 +43,8 @@ const memberService = {
 		let member = null;
 		if (username) {
 			member = await db.Member.findOne({ where: { username } });
-		} else {
+		}
+		if (!member && email) {
 			member = await db.Member.findOne({ where: { email } });
 		}
 
